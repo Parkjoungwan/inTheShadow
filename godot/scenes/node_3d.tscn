@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfs8yk3suhkvp"]
+
+[ext_resource type="ArrayMesh" uid="uid://ix67cwlnpmco" path="res://asset/elephant.obj" id="1_5tbjy"]
+[ext_resource type="Script" path="res://scripts/Elephant.gd" id="2_8oqqv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j6aje"]
+size = Vector2(10, 10)
+orientation = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Elephant" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0872251, 0, 0.590367)
+mesh = ExtResource("1_5tbjy")
+script = ExtResource("2_8oqqv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -6.02683, 1.80356, 7.38527)
+fov = 60.3
+
+[node name="shadowWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.311788, 0.18003, -8.53174)
+mesh = SubResource("PlaneMesh_j6aje")
+skeleton = NodePath("../DirectionalLight3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.828455, 0.319374, 8.23724)
+light_color = Color(0.945098, 0.788235, 0.647059, 1)
+light_energy = 1.667
+shadow_enabled = true

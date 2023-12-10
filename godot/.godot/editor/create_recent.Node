@@ -1,0 +1,9 @@
+MeshInstance3D
+DirectionalLight3D
+Camera3D
+CollisionShape2D
+StaticBody2D
+AnimatedSprite2D
+CharacterBody2D
+Button
+VBoxContainer

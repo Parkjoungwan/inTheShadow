@@ -1,0 +1,13 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.1
+
+[libraries]
+linux.debug.x86_64 =     "res://../sceneChange/target/debug/libsceneChange.so"
+linux.release.x86_64 =   "res://../sceneChange/target/release/libsceneChange.so"
+windows.debug.x86_64 =   "res://../sceneChange/target/debug/libsceneChange.dll"
+windows.release.x86_64 = "res://../sceneChange/target/release/libsceneChange.dll"
+macos.debug =            "res://../sceneChange/target/debug/libsceneChange.dylib"
+macos.release =          "res://../sceneChange/target/release/libsceneChange.dylib"
+macos.debug.arm64 =      "res://../sceneChange/target/debug/libsceneChange.dylib"
+macos.release.arm64 =    "res://../sceneChange/target/release/libsceneChange.dylib"
