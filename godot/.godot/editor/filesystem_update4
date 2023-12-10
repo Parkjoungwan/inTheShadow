@@ -3,5 +3,5 @@ res://scripts/CharacterBodygd.gd
 res://scenes/node_3d.tscn
 res://scenes/selectPuzzle.tscn
 res://scenes/CharacterBody2D.tscn
-res://scripts/startButton.gd
-res://scripts/Elephant.gd
+res://scripts/keyController.gd
+res://scripts/mouseController.gd
