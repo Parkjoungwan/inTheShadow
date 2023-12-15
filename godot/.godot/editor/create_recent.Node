@@ -1,6 +1,9 @@
+Camera3D
+SubViewport
+SubViewportContainer
+Control
 MeshInstance3D
 DirectionalLight3D
-Camera3D
 CollisionShape2D
 StaticBody2D
 AnimatedSprite2D

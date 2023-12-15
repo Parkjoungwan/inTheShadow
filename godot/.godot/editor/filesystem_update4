@@ -1,7 +1,5 @@
-res://scenes/menu.tscn
-res://scripts/CharacterBodygd.gd
 res://scenes/node_3d.tscn
-res://scenes/selectPuzzle.tscn
-res://scenes/CharacterBody2D.tscn
-res://scripts/keyController.gd
-res://scripts/mouseController.gd
+res://scripts/CharacterBodygd.gd
+res://shader/depth_viewer.gdshader
+res://scripts/SubViewport.gd
+res://scenes/SubViewport.gd
