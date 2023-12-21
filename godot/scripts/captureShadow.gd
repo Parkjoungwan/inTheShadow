@@ -7,7 +7,6 @@ func _ready():
 	print("testing")
 	# 캡쳐 쿼리: Viewport의 내용을 캡쳐합니다.
 	var img = get_texture().get_image()
-	img.flip_y() # Y축을 기준으로 이미지를 뒤집습니다.
 	# 이미지 파일로 저장: PNG 형식으로 저장합니다.
 	var file_path = "res://captured_image.png"
 	img.save_png(file_path)

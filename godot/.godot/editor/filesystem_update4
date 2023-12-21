@@ -1,5 +1,5 @@
 res://scenes/node_3d.tscn
 res://scripts/CharacterBodygd.gd
 res://shader/depth_viewer.gdshader
-res://scripts/SubViewport.gd
-res://scenes/SubViewport.gd
+res://scripts/objectRotate.gd
+res://scripts/captureShadow.gd

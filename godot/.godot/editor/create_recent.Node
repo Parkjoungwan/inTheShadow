@@ -1,5 +1,8 @@
-Camera3D
+CollisionShape3D
+StaticBody3D
+RayCast3D
 SubViewport
+Camera3D
 SubViewportContainer
 Control
 MeshInstance3D

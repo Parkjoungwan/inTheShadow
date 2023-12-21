@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfs8yk3suhkvp"]
+[gd_scene load_steps=11 format=3 uid="uid://dfs8yk3suhkvp"]
 
 [ext_resource type="ArrayMesh" uid="uid://ix67cwlnpmco" path="res://asset/elephant.obj" id="1_5tbjy"]
-[ext_resource type="Script" path="res://scenes/SubViewport.gd" id="1_mefdq"]
-[ext_resource type="Script" path="res://scripts/Elephant.gd" id="2_8oqqv"]
+[ext_resource type="Script" path="res://scripts/captureShadow.gd" id="1_bugh2"]
+[ext_resource type="Script" path="res://scripts/objectRotate.gd" id="3_puqkj"]
+[ext_resource type="ArrayMesh" uid="uid://ce8pq0rw45oy5" path="res://asset/globe_base.obj" id="3_ueqe8"]
+[ext_resource type="ArrayMesh" uid="uid://bkrsh2lf84upy" path="res://asset/globe-earth.obj" id="4_liqdw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gv5bq"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j6aje"]
-size = Vector2(10, 10)
+size = Vector2(50, 50)
 orientation = 2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8uwg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8utn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c1xtm"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -18,28 +26,60 @@ texture_mipmap_bias = 0.32
 vrs_mode = 1
 vrs_texture = SubResource("ViewportTexture_gv5bq")
 render_target_update_mode = 1
-script = ExtResource("1_mefdq")
+script = ExtResource("1_bugh2")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.3)
 fov = 70.0
 
 [node name="Elephant" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 0.0872251, 0, 0.590367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0872251, 0, 0.590367)
+visible = false
 mesh = ExtResource("1_5tbjy")
-script = ExtResource("2_8oqqv")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -6.85824, 1.48424, 8.1574)
-fov = 60.3
 
 [node name="shadowWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173791, 0.18003, -13.5729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173791, 0.18003, -32.0132)
 mesh = SubResource("PlaneMesh_j6aje")
 skeleton = NodePath("../DirectionalLight3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0470655, 0.995026, 8.23724)
+transform = Transform3D(0.999988, -2.91035e-11, -0.00493926, 0.000327344, 0.997801, 0.0662731, 0.0049284, -0.0662739, 0.997789, -0.0470655, 2.10104, 10.9241)
 light_color = Color(0.945098, 0.788235, 0.647059, 1)
 light_energy = 1.667
 shadow_enabled = true
+
+[node name="GlobeBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -3.80262, 1.99541, 2.67168)
+mesh = ExtResource("3_ueqe8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GlobeBase"]
+transform = Transform3D(-1.99941, 0, -0.121289, 0, 2, 0, 0.0485156, 0, -4.99853, -2.5, 0, -1.7)
+physics_material_override = SubResource("PhysicsMaterial_x8uwg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GlobeBase/StaticBody3D"]
+transform = Transform3D(-2.99912, 0, 0.0727734, 0, 3, 0, -0.0727734, 0, -2.99912, 0.000390539, 0, 9.47621e-06)
+shape = SubResource("BoxShape3D_x8utn")
+
+[node name="Globe-earth" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -3.695, 2.5, 8.555)
+mesh = ExtResource("4_liqdw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Globe-earth"]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Globe-earth/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_c1xtm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -12.2599, 3.40875, 16.4989)
+fov = 61.1512
+script = ExtResource("3_puqkj")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(0.902584, 0, 0.430511, 0, 0.999999, 0, -0.430511, 0, 0.902585, -0.0182638, 0.0161479, -0.387512)
+target_position = Vector3(700, 1100, 1000)
+collision_mask = 3
+collide_with_areas = true
+debug_shape_custom_color = Color(0.694118, 0, 0, 1)
+debug_shape_thickness = 5
