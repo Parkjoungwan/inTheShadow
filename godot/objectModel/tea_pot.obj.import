@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvgu8kjjedl8v"
+path="res://.godot/imported/tea_pot.obj-7fd88f09199fbc0cd19253697d12d1b8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tea_pot.obj-7fd88f09199fbc0cd19253697d12d1b8.mesh"]
+
+source_file="res://objectModel/tea_pot.obj"
+dest_files=["res://.godot/imported/tea_pot.obj-7fd88f09199fbc0cd19253697d12d1b8.mesh", "res://.godot/imported/tea_pot.obj-7fd88f09199fbc0cd19253697d12d1b8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

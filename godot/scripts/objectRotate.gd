@@ -35,16 +35,13 @@ func _mouse_pressed (curPosition):
 func select_object_under_mouse():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_origin = project_ray_origin(mouse_pos)
-	print(ray_origin)
 	var ray_end = ray_origin + project_ray_normal(mouse_pos) * 10000000
-	print(project_ray_normal(mouse_pos))
 
 	raycast.set_target_position(ray_end)
 	raycast.force_raycast_update()
 	
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
-		print(collider)
 		if collider is StaticBody3D:
 			selected_object = collider.get_parent()
 

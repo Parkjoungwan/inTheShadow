@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfs8yk3suhkvp"]
+
+[ext_resource type="Script" path="res://scripts/objectRotate.gd" id="2_dllyc"]
+[ext_resource type="ArrayMesh" uid="uid://bvgu8kjjedl8v" path="res://objectModel/tea_pot.obj" id="2_wd8su"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gv5bq"]
+viewport_path = NodePath("captureViewport")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j6aje"]
+size = Vector2(50, 50)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c1xtm"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="captureViewport" type="SubViewport" parent="."]
+texture_mipmap_bias = 0.32
+vrs_mode = 1
+vrs_texture = SubResource("ViewportTexture_gv5bq")
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="captureViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.045)
+fov = 70.0
+
+[node name="3D_Lights" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999988, 8.73104e-11, -0.00493926, 0.000327344, 0.997801, 0.0662731, 0.0049284, -0.0662739, 0.997789, -0.0470655, 2.10104, 17.9635)
+light_color = Color(0.945098, 0.788235, 0.647059, 1)
+light_energy = 1.667
+shadow_enabled = true
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -14.3751, 3.40875, 16.7062)
+fov = 61.1512
+script = ExtResource("2_dllyc")
+
+[node name="RayCast3D" type="RayCast3D" parent="MainCamera"]
+transform = Transform3D(0.902584, 0, 0.430511, 0, 0.999999, 0, -0.430511, 0, 0.902585, -0.0182638, 0.0161479, -0.387512)
+visible = false
+target_position = Vector3(700, 1100, 1000)
+collision_mask = 3
+collide_with_areas = true
+debug_shape_custom_color = Color(0.694118, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="shadowWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173791, 0.18003, -55.5066)
+mesh = SubResource("PlaneMesh_j6aje")
+skeleton = NodePath("../3D_Lights")
+
+[node name="TeaPot" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57967, -9.53674e-07, -5.88917)
+mesh = ExtResource("2_wd8su")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TeaPot"]
+transform = Transform3D(2, 0, 0, 0, 1.99239, 0.174311, 0, -0.174311, 1.99239, -0.294454, 2.05641, 0.553524)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TeaPot/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_c1xtm")

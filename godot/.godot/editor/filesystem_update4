@@ -1,5 +1,6 @@
-res://scenes/node_3d.tscn
+res://scenes/inTheShadowRoom.tscn
 res://scripts/CharacterBodygd.gd
 res://shader/depth_viewer.gdshader
+res://scenes/menu.tscn
+res://scenes/selectPuzzle.tscn
 res://scripts/objectRotate.gd
-res://scripts/captureShadow.gd
