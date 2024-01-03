@@ -47,6 +47,10 @@ func select_object_under_mouse():
 
 func _mouse_released ():
 	is_rotating = false
+	# selected_object의 회전율 출력
+	var basis = selected_object.transform.basis
+	var quat = Quaternion(basis)
+	print(quat)
 	selected_object = null
 
 func _mouse_motion (curPosition):

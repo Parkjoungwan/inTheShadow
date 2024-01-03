@@ -31,7 +31,7 @@ light_energy = 1.667
 shadow_enabled = true
 
 [node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -14.3751, 3.40875, 16.7062)
+transform = Transform3D(0.902585, 0, -0.430511, 0, 1, 0, 0.430511, 0, 0.902585, -11.804, 3.40875, 12.1792)
 fov = 61.1512
 script = ExtResource("2_dllyc")
 
@@ -45,7 +45,7 @@ debug_shape_custom_color = Color(0.694118, 0, 0, 1)
 debug_shape_thickness = 5
 
 [node name="shadowWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173791, 0.18003, -55.5066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173791, 0.18003, -34.4475)
 mesh = SubResource("PlaneMesh_j6aje")
 skeleton = NodePath("../3D_Lights")
 
