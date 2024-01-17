@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfs8yk3suhkvp"]
+[gd_scene load_steps=7 format=3 uid="uid://dfs8yk3suhkvp"]
 
+[ext_resource type="Script" path="res://scenes/inTheShadowRoom.gd" id="1_dl53h"]
 [ext_resource type="Script" path="res://scripts/objectRotate.gd" id="2_dllyc"]
 [ext_resource type="ArrayMesh" uid="uid://bvgu8kjjedl8v" path="res://objectModel/tea_pot.obj" id="2_wd8su"]
 
@@ -13,6 +14,7 @@ orientation = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_c1xtm"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_dl53h")
 
 [node name="captureViewport" type="SubViewport" parent="."]
 texture_mipmap_bias = 0.32

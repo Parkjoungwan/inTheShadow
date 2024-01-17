@@ -1,5 +1,7 @@
 res://scenes/inTheShadowRoom.tscn
 res://scripts/CharacterBodygd.gd
 res://shader/depth_viewer.gdshader
+res://scripts/objectRotate.gd
 res://scenes/menu.tscn
 res://scenes/selectPuzzle.tscn
+res://scripts/getAnswerAndCompare.gd

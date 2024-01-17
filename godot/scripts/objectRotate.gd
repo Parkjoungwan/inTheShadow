@@ -10,6 +10,8 @@ var keyController = preload("./keyController.gd")
 var mouseController = preload("./mouseController.gd")
 var selected_object: MeshInstance3D = null
 var raycast: RayCast3D
+var answerCheck = preload("res://scripts/getAnswerAndCompare.gd")
+var answer_check_instance
 
 func _ready():
 	raycast = get_node("RayCast3D")
@@ -17,6 +19,7 @@ func _ready():
 		raycast.enabled = true
 	else:
 		print("RayCast3D 노드를 찾을 수 없습니다.")
+	answer_check_instance = answerCheck.new()
 	key_event_class_instance = keyController.new()
 	mouse_event_class_instance = mouseController.new()
 	add_child(key_event_class_instance)
@@ -39,7 +42,7 @@ func select_object_under_mouse():
 
 	raycast.set_target_position(ray_end)
 	raycast.force_raycast_update()
-	
+
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider is StaticBody3D:
@@ -48,9 +51,12 @@ func select_object_under_mouse():
 func _mouse_released ():
 	is_rotating = false
 	# selected_object의 회전율 출력
-	var basis = selected_object.transform.basis
-	var quat = Quaternion(basis)
-	print(quat)
+	if selected_object:
+		var basis = selected_object.transform.basis
+		var quat = Quaternion(basis)
+		answer_check_instance.anwer_check(0, quat)
+
+		print(quat)
 	selected_object = null
 
 func _mouse_motion (curPosition):
