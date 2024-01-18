@@ -1,5 +1,7 @@
 class_name GetAnswerCompare
 
+extends Node
+
 var answer_arrays = [
 	[
 		Quaternion(-0.005844995661875055, 0.9981032592130265, -0.06067495496736851, -0.00861799360377061),
@@ -725,7 +727,6 @@ var answer_arrays = [
 	]
 ]
 
-
 func find_closest_quaternion(quat_array: Array, target_quat: Quaternion) -> Quaternion:
 	var closest_quat = Quaternion()
 	var min_angle_diff = INF # INF는 무한대를 나타냄
@@ -744,10 +745,11 @@ func is_answer(closest_quaternion: Quaternion, target_quat: Quaternion) -> bool:
 	var angle_diff = closest_quaternion.angle_to(target_quat)
 
 	# 각도 차이가 특정 임계값(예: 0.01 라디안) 이내인지 확인합니다.
-	const ANGLE_THRESHOLD = 0.01  # 임계값 설정
+	const ANGLE_THRESHOLD = 0.1  # 임계값 설정
 	return angle_diff <= ANGLE_THRESHOLD
 
 func answer_check(id: int, target_quat: Quaternion) -> bool:
 	var target_answer_array = answer_arrays[id]
-	var closestQuaternion = find_closest_quaternion(target_answer_array, target_quat);
+	var closestQuaternion = find_closest_quaternion(target_answer_array, target_quat)
+	print(closestQuaternion)
 	return is_answer(closestQuaternion, target_quat)

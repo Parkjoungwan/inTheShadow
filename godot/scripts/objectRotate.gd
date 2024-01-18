@@ -4,14 +4,14 @@ var is_rotating : bool = false
 var click_position : Vector2
 var is_horizontal_rotation : bool = false
 
+var answer_check_instance
 var key_event_class_instance
 var mouse_event_class_instance
 var keyController = preload("./keyController.gd")
 var mouseController = preload("./mouseController.gd")
+var answerCheck = preload("./getAnswerAndCompare.gd")
 var selected_object: MeshInstance3D = null
 var raycast: RayCast3D
-var answerCheck = preload("res://scripts/getAnswerAndCompare.gd")
-var answer_check_instance
 
 func _ready():
 	raycast = get_node("RayCast3D")
@@ -52,10 +52,9 @@ func _mouse_released ():
 	is_rotating = false
 	# selected_object의 회전율 출력
 	if selected_object:
-		var basis = selected_object.transform.basis
+		var basis = selected_object.transform.basis.orthonormalized()
 		var quat = Quaternion(basis)
-		answer_check_instance.anwer_check(0, quat)
-
+		print(answer_check_instance.answer_check(0, quat))
 		print(quat)
 	selected_object = null
 
