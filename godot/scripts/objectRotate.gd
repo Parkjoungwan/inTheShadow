@@ -54,8 +54,10 @@ func _mouse_released ():
 	if selected_object:
 		var basis = selected_object.transform.basis.orthonormalized()
 		var quat = Quaternion(basis)
+		print(quat)
 		print(answer_check_instance.answer_check(0, quat))
-		answer_check_instance.test_answers(0, selected_object)
+		selected_object.transform.basis = Quaternion(0.6428,0.0372,0.0119,0.7650)
+		# answer_check_instance.test_answers(0, selected_object)
 	selected_object = null
 
 func _mouse_motion (curPosition):
