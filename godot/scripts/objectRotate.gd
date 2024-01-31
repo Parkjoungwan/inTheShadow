@@ -52,12 +52,10 @@ func _mouse_released ():
 	is_rotating = false
 	# selected_object의 회전율 출력
 	if selected_object:
-		var basis = selected_object.transform.basis.orthonormalized()
-		var quat = Quaternion(basis)
-		print(quat)
-		print(answer_check_instance.answer_check(0, quat))
-		selected_object.transform.basis = Quaternion(0.6428,0.0372,0.0119,0.7650)
-		# answer_check_instance.test_answers(0, selected_object)
+		var quat = selected_object.transform.basis.orthonormalized().get_rotation_quaternion()
+		# 현재 quat값을 출력하는 코드
+		# print(quat)
+		answer_check_instance._answer_checking(selected_object)
 	selected_object = null
 
 func _mouse_motion (curPosition):

@@ -52,7 +52,7 @@ mesh = SubResource("PlaneMesh_j6aje")
 skeleton = NodePath("../3D_Lights")
 
 [node name="TeaPot" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57967, -9.53674e-07, -5.88917)
+transform = Transform3D(-0.487595, -0.508309, -0.70984, 0.530382, -0.818275, 0.221634, -0.693502, -0.268419, 0.668585, -1.57967, -9.53674e-07, -5.88917)
 mesh = ExtResource("2_wd8su")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TeaPot"]
