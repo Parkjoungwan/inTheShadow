@@ -5,7 +5,7 @@ common_axis = (-0.02847227268233425, -0.08957701039559815, -0.9955728445959591)
 from math import radians
 
 quaternions = []
-for degree in range(1, 361):
+for degree in range(-720, 720):
     radian = radians(degree)
     quaternions.append(common_axis + (radian,))
 
